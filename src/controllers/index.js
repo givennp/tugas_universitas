@@ -1,1 +1,3 @@
-module.exports = {}
+const mahasiswaControllers = require("./mahasiswa");
+
+module.exports = { mahasiswaControllers };
