@@ -11,5 +11,6 @@ router.post(
   "/:mahasiswa_id/matakuliah",
   mahasiswaControllers.addMahasiswaToMatakuliah
 );
+router.post("/:mahasiswa_id/club", mahasiswaControllers.addMahasiswaToClub);
 
 module.exports = router;

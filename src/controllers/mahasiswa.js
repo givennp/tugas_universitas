@@ -102,6 +102,36 @@ const mahasiswaControllers = {
       });
     }
   },
+  addMahasiswaToClub: async (req, res) => {
+    try {
+      const { club_id } = req.body;
+      const { mahasiswa_id } = req.params;
+
+      const findMahasiswaSql = `SELECT * FROM club_mahasiswa WHERE mahasiswa_id = ? AND club_id = ?`;
+
+      const replacements = [mahasiswa_id, club_id];
+
+      const findMahasiswa = await dbQuery(findMahasiswaSql, replacements);
+
+      if (findMahasiswa.length) {
+        return res.status(400).json({
+          message: "Mahasiswa has already joined the club",
+        });
+      }
+
+      const addSql = `INSERT INTO club_mahasiswa VALUES (0,?,?)`;
+
+      await dbQuery(addSql, replacements);
+      return res.status(201).json({
+        message: "success add mahasiswa to club",
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        message: "Server error",
+      });
+    }
+  },
 };
 
 module.exports = mahasiswaControllers;
