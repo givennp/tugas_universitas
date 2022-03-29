@@ -1,13 +1,13 @@
 const dbQuery = require("../database");
 
-const fakultasControllers = {
-  getAllFakultas: async (req, res) => {
+const matakuliahControllers = {
+  getAllMatakuliah: async (req, res) => {
     try {
-      let sqlQuerry = `SELECT * FROM fakultas`;
+      let sqlQuerry = `SELECT * FROM matakuliah`;
       const dbResult = await dbQuery(sqlQuerry);
 
       res.status(200).json({
-        message: "Fakultas fetched successfully",
+        message: "Matakuliah fetched successfully",
         dbResult: dbResult,
       });
     } catch (err) {
@@ -18,18 +18,18 @@ const fakultasControllers = {
     }
   },
 
-  createNewFakultas: async (req, res) => {
+  createNewMatakuliah: async (req, res) => {
     try {
-      const { fakultas_name } = req.body;
+      const { matakuliah_name } = req.body;
 
-      let sqlQuery = `INSERT INTO fakultas VALUES (0, ?);`;
+      let sqlQuery = `INSERT INTO matakuliah VALUES (0, ?);`;
 
-      let replacements = [fakultas_name];
+      let replacements = [matakuliah_name];
 
       const dbResult = await dbQuery(sqlQuery, replacements);
 
       res.status(201).json({
-        message: "fakultas added successfully",
+        message: "matakuliah added successfully",
         result: dbResult,
       });
     } catch (err) {
@@ -40,27 +40,27 @@ const fakultasControllers = {
     }
   },
 
-  editFakultas: async (req, res) => {
+  editMatakuliah: async (req, res) => {
     try {
-      const { fakultas_name } = req.body;
-      const fakultasId = req.params.id;
+      const { matakuliah_name } = req.body;
+      const matakuliahId = req.params.id;
 
       let editQuery = "";
 
-      if (fakultas_name) {
-        editQuery += `fakultas_name = "${fakultas_name}", `;
+      if (matakuliah_name) {
+        editQuery += `matakuliah_name = "${matakuliah_name}", `;
       }
 
       editQuery = editQuery.slice(0, -2);
 
-      let sqlQuery = `UPDATE fakultas SET ${editQuery} WHERE id=${fakultasId}`;
+      let sqlQuery = `UPDATE matakuliah SET ${editQuery} WHERE id=${matakuliahId}`;
 
       const dbResult = await dbQuery(sqlQuery)
+
         res.status(201).json({
-          message: "Fakultas editted successfully",
+          message: "Matakuliah editted successfully",
           result: dbResult,
         });
-        
     } catch (err) {
       console.log(err);
       res.status(500).json({
@@ -69,16 +69,16 @@ const fakultasControllers = {
     }
   },
 
-  deleteFakultas: async (req, res) => {
+  deleteMatakuliah: async (req, res) => {
     try {
-      const fakultasId = req.params.id;
-      let sqlQuery = `DELETE FROM fakultas WHERE id = ?`;
+      const matakuliahId = req.params.id;
+      let sqlQuery = `DELETE FROM matakuliah WHERE id = ?`;
 
-      let replacements = [fakultasId];
+      let replacements = [matakuliahId];
 
       const dbResult = await dbQuery(sqlQuery, replacements);
       res.status(201).json({
-        message: "Deleted fakultas successfully",
+        message: "Deleted matakuliah successfully",
         result: dbResult,
       });
     } catch (err) {
@@ -90,4 +90,4 @@ const fakultasControllers = {
   },
 };
 
-module.exports = fakultasControllers;
+module.exports = matakuliahControllers;
