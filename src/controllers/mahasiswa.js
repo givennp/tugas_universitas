@@ -72,6 +72,36 @@ const mahasiswaControllers = {
       });
     }
   },
+  addMahasiswaToMatakuliah: async (req, res) => {
+    try {
+      const { matakuliah_id } = req.body;
+      const { mahasiswa_id } = req.params;
+
+      const findMahasiswaSql = `SELECT * FROM matakuliah_mahasiswa WHERE mahasiswa_id = ? AND matakuliah_id = ?`;
+
+      const replacements = [mahasiswa_id, matakuliah_id];
+
+      const findMahasiswa = await dbQuery(findMahasiswaSql, replacements);
+
+      if (findMahasiswa.length) {
+        return res.status(400).json({
+          message: "Mahasiswa has already joined the matakuliah",
+        });
+      }
+
+      const addSql = `INSERT INTO matakuliah_mahasiswa VALUES (0,?,?)`;
+
+      await dbQuery(addSql, replacements);
+      return res.status(201).json({
+        message: "success add mahasiswa to matakuliaj",
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        message: "Server error",
+      });
+    }
+  },
 };
 
 module.exports = mahasiswaControllers;
