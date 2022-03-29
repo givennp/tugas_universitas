@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const { mahasiswaRoutes } = require("./routes");
+const { mahasiswaRoutes, clubRoutes } = require("./routes");
 
 dotenv.config();
 
@@ -16,7 +16,7 @@ app.use("/mahasiswa", mahasiswaRoutes);
 // app.use("/dosen");
 // app.use("/fakultas");
 // app.use("/matakuliah");
-// app.use("/club");
+app.use("/club", clubRoutes);
 
 app.listen(PORT, () => {
   console.log("listening in port", PORT);
