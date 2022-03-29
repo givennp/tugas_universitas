@@ -12,9 +12,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const { fakultasRoutes, mahasiswaRoutes, clubRoutes } = require("./routes");
 app.use("/mahasiswa", mahasiswaRoutes);
 app.use("/dosen", dosenRoutes);
-// app.use("/fakultas");
+app.use("/fakultas", fakultasRoutes);
 // app.use("/matakuliah");
 app.use("/club", clubRoutes);
 
