@@ -1,7 +1,7 @@
-const fakultasControllers = require("./fakultas");
-const mahasiswaControllers = require("./mahasiswa")
+const fakultasRoutes = require("./fakultas");
+const mahasiswaRoutes = require("./mahasiswa")
 
 module.exports = {
-    fakultasControllers,
-    mahasiswaControllers
+    fakultasRoutes,
+    mahasiswaRoutes
 }
