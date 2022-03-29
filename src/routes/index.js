@@ -7,5 +7,6 @@ module.exports = {
     fakultasRoutes,
     mahasiswaRoutes,
     clubRoutes,
-    matakuliahRoutes
+    matakuliahRoutes,
+    dosenRoutes
 }

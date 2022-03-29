@@ -3,8 +3,8 @@ const { mahasiswaControllers } = require("../controllers");
 const router = express.Router();
 
 router.get("/", mahasiswaControllers.getAllMahasiswa);
-router.post("/");
-router.patch("/");
-router.delete("/");
+router.post("/", mahasiswaControllers.createNewMahasiswa);
+router.patch("/:id", mahasiswaControllers.editMahasiswa);
+router.delete("/:id", mahasiswaControllers.deleteMahasiswa);
 
 module.exports = router;
