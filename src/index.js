@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const { mahasiswaRoutes, clubRoutes } = require("./routes");
+const { mahasiswaRoutes, clubRoutes, dosenRoutes } = require("./routes");
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/mahasiswa", mahasiswaRoutes);
-// app.use("/dosen");
+app.use("/dosen", dosenRoutes);
 // app.use("/fakultas");
 // app.use("/matakuliah");
 app.use("/club", clubRoutes);
