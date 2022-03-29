@@ -1,7 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const { mahasiswaRoutes, clubRoutes, dosenRoutes } = require("./routes");
+const {
+  mahasiswaRoutes,
+  clubRoutes,
+  dosenRoutes,
+  fakultasRoutes,
+} = require("./routes");
 
 dotenv.config();
 
@@ -12,7 +17,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const { fakultasRoutes, mahasiswaRoutes, clubRoutes } = require("./routes");
 app.use("/mahasiswa", mahasiswaRoutes);
 app.use("/dosen", dosenRoutes);
 app.use("/fakultas", fakultasRoutes);
