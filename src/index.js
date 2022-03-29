@@ -11,11 +11,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/mahasiswa");
-app.use("/dosen");
-app.use("/fakultas");
-app.use("/matakuliah");
-app.use("/club");
+// app.use("/mahasiswa");
+// app.use("/dosen");
+// app.use("/fakultas");
+// app.use("/matakuliah");
+
+const {clubRoutes} = require("./routes")
+app.use("/club", clubRoutes);
 
 
 app.listen(PORT, () => {
