@@ -21,3 +21,5 @@ const mahasiswaControllers = {
   editMahasiswa: (req, res) => {},
   deleteMahasiswa: (req, res) => {},
 };
+
+module.exports = mahasiswaControllers;
