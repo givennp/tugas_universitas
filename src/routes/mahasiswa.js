@@ -1,7 +1,8 @@
 const express = require("express");
+const { mahasiswaControllers } = require("../controllers");
 const router = express.Router();
 
-router.get("/");
+router.get("/", mahasiswaControllers.getAllMahasiswa);
 router.post("/");
 router.patch("/");
 router.delete("/");
